@@ -1,0 +1,28 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Registro de usuario</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form class="registro-form">
+            <mat-form-field class="registro-form-field">
+                <mat-label>Nombre</mat-label>
+                <input matInput name="nombre" placeholder="Nombre">
+            </mat-form-field>
+            <mat-form-field class="login-form-field">
+                <mat-label>email</mat-label>
+                <input matInput type="email" name="usuario" placeholder="Email">
+            </mat-form-field>
+            <mat-form-field class="login-form-field">
+                <mat-label>Usuario</mat-label>
+                <input matInput name="usuario" placeholder="Nombre de usuario">
+            </mat-form-field>
+            <mat-form-field class="login-form-field">
+                <mat-label>Contraseña</mat-label>
+                <input matInput type="password" name="password" placeholder="Contraseña">
+            </mat-form-field>
+
+            <button mat-raised-button color="primary">Registrarse</button>
+            <button mat-raised-button color="warn" routerLink="/login">Volver</button>
+        </form>
+    </mat-card-content>
+</mat-card>

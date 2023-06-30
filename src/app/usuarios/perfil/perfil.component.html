@@ -1,0 +1,14 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Perfil usuario</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <h1>Perfil usuario</h1>
+        <p>Nombre:</p>
+        <p>Apellido:</p>
+        <p>Identificación:</p>
+        <button mat-raised-button color="warn" *ngIf="isLoggedIn()" (click)="logout()">Cerrar sesión</button>
+    </mat-card-content>
+</mat-card>
+
+
