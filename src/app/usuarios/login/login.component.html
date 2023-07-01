@@ -3,14 +3,18 @@
         <mat-card-title>Iniciar Sesión</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <form class="login-form" (submit)="onSubmit()">
+        <form [formGroup]="loginForm" class="login-form" (submit)="onSubmit()">
             <mat-form-field class="login-form-field">
                 <mat-label>Usuario</mat-label>
-                <input matInput name="usuario" placeholder="Nombre de usuario">
+                <input matInput formControlName="usuario" placeholder="Nombre de usuario">
+                <mat-error *ngIf="loginForm.controls['usuario']?.errors?.['required']">Este campo es obligatorio.</mat-error>
+                <mat-error *ngIf="loginForm.controls['usuario']?.errors?.['email']">Debe ser un email.</mat-error>
             </mat-form-field>
             <mat-form-field class="login-form-field">
                 <mat-label>Contraseña</mat-label>
-                <input matInput type="password" name="password" placeholder="Contraseña">
+                <input matInput type="password" formControlName="password" placeholder="Contraseña">
+                <mat-error *ngIf="loginForm.controls['password']?.errors?.['required']">Este campo es obligatorio.</mat-error>
+                <mat-error *ngIf="loginForm.controls['password']?.errors?.['minlength']">Debe tener al menos 6 caracteres.</mat-error>
             </mat-form-field>
 
             <button mat-raised-button color="primary" type="submit">Iniciar Sesión</button>

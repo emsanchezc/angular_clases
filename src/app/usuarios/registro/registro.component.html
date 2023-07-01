@@ -3,22 +3,37 @@
         <mat-card-title>Registro de usuario</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <form class="registro-form">
+        <form [formGroup]="registroForm" class="registro-form" (submit)="onSubmit()">
             <mat-form-field class="registro-form-field">
                 <mat-label>Nombre</mat-label>
-                <input matInput name="nombre" placeholder="Nombre">
+                <input matInput formControlName="nombre" placeholder="Nombre">
+                <mat-error *ngIf="registroForm.controls['nombre']?.errors?.['required']">El nombre es obligatorio</mat-error>
+                <mat-error *ngIf="registroForm.controls['nombre']?.errors?.['minlength']">El nombre debe tener al menos 3 caracteres</mat-error>
+            </mat-form-field>
+            <mat-form-field class="registro-form-field">
+                <mat-label>Apellidos</mat-label>
+                <input matInput formControlName="apellidos" placeholder="Apellidos">
+                <mat-error *ngIf="registroForm.controls['apellidos']?.errors?.['required']">Los apellidos son obligatorios</mat-error>
+                <mat-error *ngIf="registroForm.controls['apellidos']?.errors?.['minlength']">Los apellidos deben tener al menos 3 caracteres</mat-error>
             </mat-form-field>
             <mat-form-field class="login-form-field">
-                <mat-label>email</mat-label>
-                <input matInput type="email" name="usuario" placeholder="Email">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" formControlName="email" placeholder="Email">
+                <mat-error *ngIf="registroForm.controls['email']?.errors?.['required']">El email es obligatorio</mat-error>
+                <mat-error *ngIf="registroForm.controls['email']?.errors?.['email']">Debe ser un email</mat-error>
             </mat-form-field>
             <mat-form-field class="login-form-field">
-                <mat-label>Usuario</mat-label>
-                <input matInput name="usuario" placeholder="Nombre de usuario">
+                <mat-label>Edad</mat-label>
+                <input matInput formControlName="edad" placeholder="Edad">
+                <mat-error *ngIf="registroForm.controls['edad']?.errors?.['required']">La edad es obligatorio</mat-error>
+                <mat-error *ngIf="registroForm.controls['edad']?.errors?.['min']">Edad debe ser mayor o igual a 18 años</mat-error>
+                <mat-error *ngIf="registroForm.controls['edad']?.errors?.['max']">Edad debe ser menor o igual a 60 años</mat-error>
             </mat-form-field>
             <mat-form-field class="login-form-field">
                 <mat-label>Contraseña</mat-label>
-                <input matInput type="password" name="password" placeholder="Contraseña">
+                <input matInput type="password" formControlName="password" placeholder="Contraseña">
+                <mat-error *ngIf="registroForm.controls['password']?.errors?.['required']">La contraseña es obligatoria</mat-error>
+                <mat-error *ngIf="registroForm.controls['password']?.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres</mat-error>
             </mat-form-field>
 
             <button mat-raised-button color="primary">Registrarse</button>

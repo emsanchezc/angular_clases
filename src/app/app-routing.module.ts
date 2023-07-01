@@ -3,15 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from './usuarios/login/login.component';
 import { RegistroComponent } from './usuarios/registro/registro.component';
-import { PerfilComponent } from './usuarios/perfil/perfil.component';
 import { ResetPasswordComponent } from './usuarios/reset-password/reset-password.component';
+import { TemplateComponent } from './main-container/template/template.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegistroComponent},
-  { path: 'perfil', component: PerfilComponent},
   { path: 'reset-password', component: ResetPasswordComponent},
-  { path: '', redirectTo: '/login', pathMatch: 'full' }
+  { path: 'main', component: TemplateComponent},
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+
+  { path: '**', redirectTo: '/login' }  // Redirige todas las rutas no encontradas a '/login'
 ];
 
 @NgModule({

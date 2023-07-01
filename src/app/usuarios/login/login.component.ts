@@ -1,23 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
-  mensaje: string;
+  loginForm: FormGroup;
 
-  constructor(private router: Router){
-    this.mensaje = "Bienvenido";
+  constructor(private fb: FormBuilder, private router: Router){
+    this.loginForm = this.fb.group({
+      usuario:['', [Validators.required, Validators.email]],
+      password:['', [Validators.required, Validators.minLength(6)]]
+    });
+  }
+
+  ngOnInit(): void {
+
+    const loggedIn = sessionStorage.getItem('loggedIn');
+    if(loggedIn){
+      this.router.navigate(['/main']);
+    }
+
   }
 
   onSubmit(){
+
+    const formData = this.loginForm.value;
+        
+    if(this.loginForm.valid){
     
-    sessionStorage.setItem('loggedIn', 'true');
-    this.router.navigate(['/perfil'])
+      sessionStorage.setItem('formData', JSON.stringify(formData));
+      sessionStorage.setItem('loggedIn', 'true');
+      this.router.navigate(['/main'])
+    }
   }
 
 

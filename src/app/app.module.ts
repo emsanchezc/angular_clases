@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UsuariosModule } from './usuarios/usuarios.module';
+import { MainContainerModule } from './main-container/main-container.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { UsuariosModule } from './usuarios/usuarios.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    UsuariosModule
+    UsuariosModule,
+    MainContainerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

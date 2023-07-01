@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 /**
  * Modulos de material
@@ -16,6 +17,8 @@ import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { AyudaComponent } from './ayuda/ayuda.component';
+import { MicuentaComponent } from './micuenta/micuenta.component';
 
 
 
@@ -24,11 +27,14 @@ import { PerfilComponent } from './perfil/perfil.component';
     LoginComponent,
     RegistroComponent,
     ResetPasswordComponent,
-    PerfilComponent
+    PerfilComponent,
+    AyudaComponent,
+    MicuentaComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
+    ReactiveFormsModule,
     MatButtonModule,
     MatIconModule,
     MatCardModule,
