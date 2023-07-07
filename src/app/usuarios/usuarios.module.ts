@@ -29,7 +29,7 @@ import { MicuentaComponent } from './micuenta/micuenta.component';
     ResetPasswordComponent,
     PerfilComponent,
     AyudaComponent,
-    MicuentaComponent
+    MicuentaComponent,
   ],
   imports: [
     CommonModule,

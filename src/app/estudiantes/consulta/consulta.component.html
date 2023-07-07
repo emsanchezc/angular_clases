@@ -1,0 +1,39 @@
+<div class="div_botones">
+    <button mat-raised-button color="primary" (click)="abrirDialogoRegistro()">Registrar Estudiante</button>
+</div>
+
+<div class="div_tabla">
+    <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+            <td mat-cell *matCellDef="let estudiante"> {{estudiante.estudiante_nombres}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="apellidos">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Apellidos </th>
+            <td mat-cell *matCellDef="let estudiante"> {{estudiante.estudiante_apellidos}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="celular">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Celular </th>
+            <td mat-cell *matCellDef="let estudiante"> {{estudiante.estudiante_celular}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="correo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Correo </th>
+            <td mat-cell *matCellDef="let estudiante"> {{estudiante.estudiante_correo}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="fechaCreacion">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Creación </th>
+            <td mat-cell *matCellDef="let estudiante"> {{estudiante.estudiante_fechaCreacion}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20, 30, 50, 100]"
+                    showFirstLastButtons>
+    </mat-paginator>
+</div>

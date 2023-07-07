@@ -4,6 +4,7 @@ import { TemplateComponent } from './template/template.component';
 import { PerfilComponent } from '../usuarios/perfil/perfil.component';
 import { AyudaComponent } from '../usuarios/ayuda/ayuda.component';
 import { MicuentaComponent } from '../usuarios/micuenta/micuenta.component';
+import { ConsultaComponent } from '../estudiantes/consulta/consulta.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,7 @@ const routes: Routes = [
       { path: 'perfil', component: PerfilComponent },
       { path: 'ayuda', component: AyudaComponent },
       { path: 'micuenta', component: MicuentaComponent },
+      { path: 'consultar-estudiantes', component: ConsultaComponent},
       { path: '**', redirectTo: '/perfil' }  // Redirige todas las rutas no encontradas a '/perfil'
     ]
   }

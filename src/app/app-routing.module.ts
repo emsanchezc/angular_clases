@@ -11,9 +11,7 @@ const routes: Routes = [
   { path: 'registro', component: RegistroComponent},
   { path: 'reset-password', component: ResetPasswordComponent},
   { path: 'main', component: TemplateComponent},
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-
-  { path: '**', redirectTo: '/login' }  // Redirige todas las rutas no encontradas a '/login'
+  { path: '', redirectTo: '/login', pathMatch: 'full' },  
 ];
 
 @NgModule({

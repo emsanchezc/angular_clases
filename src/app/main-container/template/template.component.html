@@ -12,8 +12,12 @@
         <button mat-menu-item routerLink="/main/micuenta">Mi cuenta 2</button>
         <button mat-menu-item routerLink="/main/ayuda">Ayuda 2</button>
     </mat-menu>
+    <mat-menu #appMenu3="matMenu">
+        <button mat-menu-item routerLink="/main/consultar-estudiantes">Consulta Estudiantes</button>
+    </mat-menu>
     <button mat-button [matMenuTriggerFor]="appMenu1">Menú 1</button>
     <button mat-button [matMenuTriggerFor]="appMenu2">Menú 2</button>
+    <button mat-button [matMenuTriggerFor]="appMenu3">Estudiantes</button>
     <button mat-button *ngIf="isLoggedIn()" (click)="logout()">Cerrar sesión</button>
 </mat-toolbar>
 <div class="contenido">
