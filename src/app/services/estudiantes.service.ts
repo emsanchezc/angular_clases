@@ -31,4 +31,15 @@ export class EstudiantesService {
 
   }
 
+  consultarEstudiante(id: number): Observable<any> {
+      
+      return this.http.get(this.apiUrl + 'estudiantes/' + id, this.httpOption);
+  
+  }
+
+  actualizarEstudiante(id: number, estudiante: any): Observable<any> {
+    return this.http.put(this.apiUrl + 'estudiantes/' + id, estudiante, this.httpOption);
+  }
+
+
 }

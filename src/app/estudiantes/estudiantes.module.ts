@@ -9,14 +9,18 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { RegistroComponent } from './registro/registro.component';
+import { EditarComponent } from './editar/editar.component';
 
 
 
 @NgModule({
   declarations: [
     ConsultaComponent,
-    RegistroComponent
+    RegistroComponent,
+    EditarComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +31,9 @@ import { RegistroComponent } from './registro/registro.component';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatIconModule,
+    MatTooltipModule
   ]
 })
 export class EstudiantesModule { }

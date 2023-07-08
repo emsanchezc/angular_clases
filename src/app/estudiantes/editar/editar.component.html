@@ -1,0 +1,60 @@
+<h2 mat-dialog-title>Editar Estudiante</h2>
+<form [formGroup]="editForm" (submit)="onSubmit()">
+    <mat-dialog-content>
+        <mat-form-field class="form-field-row">
+            <mat-label>Nombres</mat-label>
+            <input matInput formControlName="nombres" placeholder="Nombres">
+            <mat-error *ngIf="editForm.controls['nombres'].errors?.['required']">Campo requerido</mat-error>
+            <mat-error *ngIf="editForm.controls['nombres'].errors?.['minlength']">Debe tener al menos 3 caracteres</mat-error>
+            <mat-error *ngIf="editForm.controls['nombres'].errors?.['maxlength']">Debe tener menos de 30 caracteres</mat-error>
+            <mat-error *ngIf="editForm.controls['nombres'].errors?.['pattern']">Solo se aceptan letras</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-field-row">
+            <mat-label>Apellidos</mat-label>
+            <input matInput formControlName="apellidos" placeholder="Apellidos">
+            <mat-error *ngIf="editForm.controls['apellidos'].errors?.['required']">Campo requerido</mat-error>
+            <mat-error *ngIf="editForm.controls['apellidos'].errors?.['minlength']">Debe tener al menos 3 caracteres</mat-error>
+            <mat-error *ngIf="editForm.controls['apellidos'].errors?.['maxlength']">Debe tener menos de 30 caracteres</mat-error>
+            <mat-error *ngIf="editForm.controls['apellidos'].errors?.['pattern']">Solo se aceptan letras</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-field-row">
+            <mat-label>Celular</mat-label>
+            <input matInput formControlName="celular" placeholder="Celular">
+            <mat-error *ngIf="editForm.controls['celular'].errors?.['required']">Campo requerido</mat-error>
+            <mat-error *ngIf="editForm.controls['celular'].errors?.['minlength']">Debe tener al menos 10 caracteres</mat-error>
+            <mat-error *ngIf="editForm.controls['celular'].errors?.['maxlength']">Debe tener menos de 13 caracteres</mat-error>
+            <mat-error *ngIf="editForm.controls['celular'].errors?.['pattern']">Solo se aceptan números</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-field-row">
+            <mat-label>Correo</mat-label>
+            <input matInput formControlName="correo" placeholder="Correo">
+            <mat-error *ngIf="editForm.controls['correo'].errors?.['required']">Campo requerido</mat-error>
+            <mat-error *ngIf="editForm.controls['correo'].errors?.['email']">Email no valido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-field-row">
+            <mat-label>LinkedIn</mat-label>
+            <input matInput formControlName="linkedin" placeholder="LinkedIn">
+            <mat-error *ngIf="editForm.controls['linkedin'].errors?.['required']">Campo requerido</mat-error>
+            <mat-error *ngIf="editForm.controls['linkedin'].errors?.['minlength']">Debe tener al menos 10 caracteres</mat-error>
+            <mat-error *ngIf="editForm.controls['linkedin'].errors?.['maxlength']">Debe tener menos de 100 caracteres</mat-error>
+            <mat-error *ngIf="editForm.controls['linkedin'].errors?.['pattern']">URL no valida</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-field-row">
+            <mat-label>Github</mat-label>
+            <input matInput formControlName="github" placeholder="Github">
+            <mat-error *ngIf="editForm.controls['github'].errors?.['required']">Campo requerido</mat-error>
+            <mat-error *ngIf="editForm.controls['github'].errors?.['minlength']">Debe tener al menos 10 caracteres</mat-error>
+            <mat-error *ngIf="editForm.controls['github'].errors?.['maxlength']">Debe tener menos de 100 caracteres</mat-error>
+            <mat-error *ngIf="editForm.controls['github'].errors?.['pattern']">URL no valida</mat-error>
+        </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-button mat-dialog-close="">Cerrar</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="editForm.invalid">Guardar</button>
+    </mat-dialog-actions>
+</form>

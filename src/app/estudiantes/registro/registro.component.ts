@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { EstudiantesService } from 'src/app/services/estudiantes.service';
 
 @Component({
@@ -20,6 +21,7 @@ export class RegistroComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private estudiantesService: EstudiantesService,
+    public dialogRef: MatDialogRef<RegistroComponent>
   ) { }
 
   ngOnInit(): void {
@@ -30,8 +32,8 @@ export class RegistroComponent implements OnInit {
       apellidos:['', [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('^[a-zA-Z ]*$')]],
       celular:['', [Validators.required, Validators.minLength(10), Validators.maxLength(13), Validators.pattern('^[0-9]*$')]],
       correo:['', [Validators.required, Validators.email]],
-      linkedin:['', [Validators.required, Validators.minLength(10), Validators.maxLength(100), Validators.pattern('^https://linkedin.com/in/[a-zA-Z0-9_.+-]*$')]],
-      github:['', [Validators.required, Validators.minLength(10), Validators.maxLength(100), Validators.pattern('^https://github.com/[a-zA-Z0-9_.+-]*$')]]
+      linkedin:['https://linkedin.com/in/', [Validators.required, Validators.minLength(10), Validators.maxLength(100), Validators.pattern('^https://linkedin.com/in/[a-zA-Z0-9_.+-]*$')]],
+      github:['https://github.com/', [Validators.required, Validators.minLength(10), Validators.maxLength(100), Validators.pattern('^https://github.com/[a-zA-Z0-9_.+-]*$')]]
     });
   }
 
@@ -53,14 +55,14 @@ export class RegistroComponent implements OnInit {
         github: this.registroForm.value.github
       }
 
-      this.estudiantesService.registrarEstudiante(estudiante).subscribe(
-        (response: any) => {
+      this.estudiantesService.registrarEstudiante(estudiante).subscribe({
+        next: (response: any) => {
           console.log(response);
           alert("Estudiante registrado correctamente");
-          
+          this.dialogRef.close();
 
         },
-        (error) => {
+        error: (error) => {
           if(error.error?.message instanceof Array){
             let errorMessage = '';
             error.error.message.forEach((err:any, index: number) => {
@@ -73,7 +75,7 @@ export class RegistroComponent implements OnInit {
             alert("Ha ocurrido un error desconocido");
           }
         }
-      );
+      });
 
 
 
