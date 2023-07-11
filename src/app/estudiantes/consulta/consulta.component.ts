@@ -5,6 +5,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { RegistroComponent } from '../registro/registro.component';
 import { EditarComponent } from '../editar/editar.component';
+import { VerComponent } from '../ver/ver.component';
+import { InhabilitarComponent } from '../inhabilitar/inhabilitar.component';
 
 @Component({
   selector: 'app-consulta',
@@ -14,7 +16,7 @@ import { EditarComponent } from '../editar/editar.component';
 export class ConsultaComponent implements OnInit, AfterViewInit  {
 
   estudiantes: any[] = [];
-  displayedColumns: string[] = ['id', 'nombre', 'apellidos', 'celular', 'correo', 'linkedin', 'github', 'fechaCreacion', 'acciones'];
+  displayedColumns: string[] = ['id', 'nombre', 'apellidos', 'celular', 'correo', 'estado', 'fechaCreacion', 'acciones'];
   dataSource = new MatTableDataSource<any>(this.estudiantes);
   
   constructor(
@@ -65,7 +67,12 @@ export class ConsultaComponent implements OnInit, AfterViewInit  {
   }
 
   verEstudiante(estudiante: number) {
-    alert('Ver estudiante: ' + estudiante);
+    
+    const dialogRef = this.dialog.open(VerComponent,{
+      width: '500px',
+      data: {id: estudiante}
+    });
+
   }
 
   abrirDialogoEditar(estudiante: number) {
@@ -91,7 +98,26 @@ export class ConsultaComponent implements OnInit, AfterViewInit  {
   }
 
   inhabilitarEstudiante(estudiante: number) {
-    alert('Inhabilitar estudiante: ' + estudiante);
+    const dialogRefInh = this.dialog.open(InhabilitarComponent,{
+      width: '500px',
+      data: {id: estudiante}
+    });
+
+    dialogRefInh.afterClosed().subscribe(result => {
+      console.log('Recargando tabla');
+      this.estudiantesService.obtenerEstudiantes().subscribe(
+        (response: any) => {
+          this.estudiantes = response.data;
+          this.dataSource = new MatTableDataSource<any>(this.estudiantes);
+          this.dataSource.paginator = this.paginator;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+      
+    });
+
   }
 
 }

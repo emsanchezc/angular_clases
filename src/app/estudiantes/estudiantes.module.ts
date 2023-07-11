@@ -13,6 +13,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RegistroComponent } from './registro/registro.component';
 import { EditarComponent } from './editar/editar.component';
+import { VerComponent } from './ver/ver.component';
+import { InhabilitarComponent } from './inhabilitar/inhabilitar.component';
 
 
 
@@ -20,7 +22,9 @@ import { EditarComponent } from './editar/editar.component';
   declarations: [
     ConsultaComponent,
     RegistroComponent,
-    EditarComponent
+    EditarComponent,
+    VerComponent,
+    InhabilitarComponent
   ],
   imports: [
     CommonModule,

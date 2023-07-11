@@ -40,6 +40,11 @@
             <td mat-cell *matCellDef="let estudiante"> {{estudiante.estudiante_github}} </td>
         </ng-container>
 
+        <ng-container matColumnDef="estado">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
+            <td mat-cell *matCellDef="let estudiante"> {{estudiante.estudiante_estado}} </td>
+        </ng-container>
+
         <ng-container matColumnDef="fechaCreacion">
             <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="Fecha en la que se creo el estudiante"> Fecha Creación </th>
             <td mat-cell *matCellDef="let estudiante"> {{estudiante.estudiante_fechaCreacion}} </td>

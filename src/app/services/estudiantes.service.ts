@@ -41,5 +41,9 @@ export class EstudiantesService {
     return this.http.put(this.apiUrl + 'estudiantes/' + id, estudiante, this.httpOption);
   }
 
+  inhabilitarEstudiante(id: number, estudiante: any): Observable<any> {
+    return this.http.put(this.apiUrl + 'estudiantes/estado/' + id, estudiante, this.httpOption);
+  }
+
 
 }
