@@ -1,0 +1,12 @@
+
+<form [formGroup]="consultaForm">
+<mat-form-field class="form-field-row">
+    <mat-label>Seleccione el curso</mat-label>
+    <mat-select formControlName="curso">
+        <mat-option *ngFor="let curso of cursos" [value]="curso.curso_id">
+            {{curso.curso_nombre}}
+        </mat-option>                
+    </mat-select>
+</mat-form-field>
+<button mat-raised-button color="primary" type="button" (click)="consultarEstudiantes()">Consultar</button>
+</form>
